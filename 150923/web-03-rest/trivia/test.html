@@ -51,34 +51,34 @@
                 <br>
                 {
                 <br>
-                "<span class='campo'>Cidade</span>": ${objeto.localidade},
+                "<span class='campo'>Pergunta</span>": ${result.question},
                 <br>
-                "<span class='campo'>UF</span>": ${objeto.uf},
+                "<span class='campo'>UF</span>": ${result.correct_answer},
                 <br>
-                "<span class='campo'>Logradouro</span>": ${objeto.logradouro},
+                "<span class='campo'>Logradouro</span>": ${result.incorrect_answers},
                 <br>
-                "<span class='campo'>Bairro</span>": ${objeto.bairro}
+                "<span class='campo'>Bairro</span>": ${result.incorrect_answers}
                 <br>
                 }
                 <br>`
             return mensagem;
         }
-        async function getPostagem(id) {
-            await fetch(`https://viacep.com.br/ws/${id}/json/`)
-                .then((response) => response.json())
-                .then((json) => {
-                    console.log(json);
+        async function getFilm() {
+            fetch("https://opentdb.com/api.php?amount=10&category=11&difficulty=easy&type=multiple")
+            .then((response) => response.json())
+                .then((result) => {
+                    console.log(result);
                     respjson.innerHTML = imprime(json);
-                });
+            });
+            .then((result) => result.json())
         }
     </script>
 </head>
 
 <body>
     <main>
-        <h1>Insira o CEP</h1>
-        <input id="numero" type="number" min="1" max="100" value="1">
-        <button onclick="getPostagem(numero.value)">Buscar</button>
+        <h1>Film test</h1>
+        <button onclick="getFilm()">Buscar</button>
 
         <div id="resp">
             <p class="campo">Resposta:</p>

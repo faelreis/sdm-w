@@ -49,34 +49,32 @@
         function imprime(objeto) {
             var mensagem = `
                 <br>
-                {
                 <br>
-                "<span class='campo'>Cidade</span>": ${objeto.localidade},
+                <span class='campo'>Nome do produto</span>: ${objeto.title},
                 <br>
-                "<span class='campo'>UF</span>": ${objeto.uf},
+                <span class='campo'>Desrição</span>: ${objeto.description},
                 <br>
-                "<span class='campo'>Logradouro</span>": ${objeto.logradouro},
+                <span class='campo'>Preço</span>: ${objeto.price},
                 <br>
-                "<span class='campo'>Bairro</span>": ${objeto.bairro}
+                <img src='${objeto.thumbnail}'/>
                 <br>
-                }
                 <br>`
             return mensagem;
         }
         async function getPostagem(id) {
-            await fetch(`https://viacep.com.br/ws/${id}/json/`)
-                .then((response) => response.json())
+            await fetch(`https://dummyjson.com/products/${id}`)
+            .then((response) => response.json())
                 .then((json) => {
                     console.log(json);
                     respjson.innerHTML = imprime(json);
                 });
-        }
+            }
     </script>
 </head>
 
 <body>
     <main>
-        <h1>Insira o CEP</h1>
+        <h1>Insira o código do produto</h1>
         <input id="numero" type="number" min="1" max="100" value="1">
         <button onclick="getPostagem(numero.value)">Buscar</button>
 

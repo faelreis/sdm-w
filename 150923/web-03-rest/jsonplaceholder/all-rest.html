@@ -23,7 +23,7 @@
             margin-bottom: 0.5rem;
         }
 
-        #resp {
+        .resp {
             padding: 0.5rem;
             background-color: orangered;
             color: white;
@@ -45,9 +45,9 @@
                 <br>
                 "<span class='campo'>userId</span>": ${objeto.userId},
                 <br>
-                "<span class='campo'>title</span>": ${objeto.title},
+                "<span class='campo'>title</span>": "${objeto.title}",
                 <br>
-                "<span class='campo'>body</span>": ${{objeto}.body}
+                "<span class='campo'>body</span>": "${objeto.body}"
                 <br>
                 }
                 <br>`
@@ -59,7 +59,7 @@
                 .then((response) => response.json())
                 .then((json) => {
                     console.log(json);
-                    respjsonPost.innerHTML = imprime(json);
+                    document.getElementById('respjsonPost').innerHTML = imprime(json);
                 });
         }
         //GET-ID
@@ -68,30 +68,10 @@
                 .then((response) => response.json())
                 .then((json) => {
                     console.log(json);
-                    respjsonGetId.innerHTML = imprime(json);
+                    document.getElementById('respjsonGetId').innerHTML = imprime(json);
                 });
         }
 
-        //POST
-        async function atualizarPostagens() {
-            fetch('https://jsonplaceholder.typicode.com/posts/1', {
-                method: 'PUT',
-                headers: {
-                    'Content-type': 'application/json; charset=UTF-8',
-                },
-                body: JSON.stringify({
-                    id: 1,
-                    title: 'Minha Mais Nova Postagem',
-                    body: 'Essa é a atualização da minha mais nova postagem! :D',
-                    userId: 1,
-                }),
-            })
-                .then((response) => response.json())
-                .then((json) => {
-                    console.log(json);
-                    respjson.innerHTML = imprime(json);
-                });
-        }
         //PUT
         async function atualizarPostagens() {
             fetch('https://jsonplaceholder.typicode.com/posts/1', {
@@ -109,7 +89,7 @@
                 .then((response) => response.json())
                 .then((json) => {
                     console.log(json);
-                    respjson.innerHTML = imprime(json);
+                    document.getElementById('respjson').innerHTML = imprime(json);
                 });
         }
         //PATCH
@@ -126,7 +106,7 @@
                 .then((response) => response.json())
                 .then((json) => {
                     console.log(json);
-                    respjson.innerHTML = imprime(json);
+                    document.getElementById('respjson').innerHTML = imprime(json);
                 });
         }
         //fILTER
@@ -135,7 +115,7 @@
                 .then((response) => response.json())
                 .then((json) => {
                     console.log(json);
-                    respjson.innerHTML = imprime(json);
+                    document.getElementById('respjson').innerHTML = imprime(json);
                 });
                 console.log('Postagem filtrada!'); 
         }
@@ -153,46 +133,46 @@
     <main>
         <h1>POST-POSTS</h1>
         <button onclick="getPostagens()">Buscar</button>
-        <div id="resp">
+        <div class="resp">
             <p class="campo">Resposta:</p>
             <p id="respjsonPost"></p>
         </div>
 
         <h1>PUT</h1>
         <button onclick="atualizarPostagens()">Atualizar</button>
-        <div id="resp">
+        <div class="resp">
             <p class="campo">Resposta:</p>
             <p id="respjson"></p>
         </div>
 
         <h1>PATCH-POSTS</h1>
         <input id="numero" type="number" min="1" max="100" value="1">
-        <button onclick="modificarPostagens(numero.value)">Modificar</button>
-        <div id="resp">
+        <button onclick="modificarPostagens(document.getElementById('numero').value)">Modificar</button>
+        <div class="resp">
             <p class="campo">Resposta:</p>
             <p id="respjson"></p>
         </div>
 
         <h1>GET-POST</h1>
-        <button onclick="getPostagens()">Buscar</button>
-        <div id="resp">
+        <button onclick="getPostagem(document.getElementById('numero').value)">Buscar</button>
+        <div class="resp">
             <p class="campo">Resposta:</p>
-            <p id="respjson"></p>
+            <p id="respjsonGetId"></p>
         </div>
 
         <h1>GET-ID</h1>
         <input id="numero" type="number" min="1" max="100" value="1">
-        <button onclick="getPostagem(numero.value)">Buscar</button>
+        <button onclick="getPostagem(document.getElementById('numero').value)">Buscar</button>
 
-        <div id="resp">
+        <div class="resp">
             <p class="campo">Resposta:</p>
-            <p id="respjson"></p>
+            <p id="respjsonGetId"></p>
         </div>
 
         <h1>FILTER</h1>
         <input id="usuario" type="number" min="1" max="10" value="1">
-        <button onclick="filtrarPostagens(usuario.value)">Filtrar</button>
-        <div id="resp">
+        <button onclick="filtrarPostagens(document.getElementById('usuario').value)">Filtrar</button>
+        <div class="resp">
             <p class="campo">Resposta:</p>
             <p id="respjson"></p>
         </div>
@@ -200,13 +180,12 @@
         <h1>DELETE-POSTS</h1>
         <input id="numero" type="number" min="1" max="100" value="1">
 
-        <button onclick="removerPostagem(numero.value)">Remover</button>
-        <div id="resp">
+        <button onclick="removerPostagem(document.getElementById('numero').value)">Remover</button>
+        <div class="resp">
             <p class="campo">Resposta:</p>
             <p id="respjson"></p>
         </div>
     </main>
-
 </body>
 
 </html>

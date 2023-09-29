@@ -11,13 +11,16 @@
     <button>Saber</button>
     <script>
         const body = document.querySelector('body')
-        const number = document.querySelector('input').value;
         const btn = document.querySelector('button');
-        const result = document.createElement('h3');
-        body.appendChild(result)
+
+
+        
 
         btn.addEventListener('click', ()=> {
-            if(number / 2 == 0){
+            const number = document.querySelector('input').value;
+            const result = document.createElement('h3');
+            body.appendChild(result)
+            if(number % 2 == 0){
                 console.log('PAR')
             } else {
                 console.log('ÍMPAR')

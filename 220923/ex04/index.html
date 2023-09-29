@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordem decrescente</title>
+</head>
+<body>
+
+    <script>
+        let num1 = parseInt(prompt("Digite o primeiro número:"));
+        let num2 = parseInt(prompt("Digite o segundo número:"));
+        let num3 = parseInt(prompt("Digite o terceiro número:"));
+
+        
+        let maior, meio, menor;
+
+        maior = (num1 > num2 && num1 > num3) ? num1 : (num2 > num3) ? num2 : num3;
+        menor = (num1 < num2 && num1 < num3) ? num1 : (num2 < num3) ? num2 : num3;
+        meio = (num1 !== maior && num1 !== menor) ? num1 : (num2 !== maior && num2 !== menor) ? num2 : num3;
+    
+        document.write(`${maior} | ${meio} | ${menor}`);
+        
+    </script>
+</body>
+</html>

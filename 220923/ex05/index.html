@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitura sexo da pessoa</title>
+</head>
+<body>
+    <script>
+        const altura = parseFloat(prompt("Digite sua altura (em metros):"));
+        const sexo = prompt("Digite seu sexo (M para masculino, F para feminino):");
+
+        
+        const pesoIdeal = (sexo === 'M') ? (72.7 * altura - 58) : (sexo === 'F') ? (62.1 * altura - 44.7) : "Sexo não reconhecido";
+
+        if (pesoIdeal !== "Sexo não reconhecido") {
+            document.write(`Seu peso ideal é: ${pesoIdeal.toFixed(2)} kg`);
+        } else {
+            document.write("Sexo não reconhecido. Use M para masculino ou F para feminino.");
+        }
+    </script>
+</body>
+</html>

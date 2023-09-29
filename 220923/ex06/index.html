@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento produto</title>
+</head>
+<body>
+    <script>
+        const precoEtiqueta = parseFloat(prompt("Digite o preço normal de etiqueta do produto:"));
+        const codigoPagamento = parseInt(prompt("Digite o código da condição de pagamento (1, 2, 3 ou 4):"));
+
+        let valorPago;
+
+        switch (codigoPagamento) {
+            case 1:
+                valorPago = precoEtiqueta * 0.9; // 10% de desconto
+                break;
+            case 2:
+                valorPago = precoEtiqueta * 0.95; // 5% de desconto
+                break;
+            case 3:
+                valorPago = precoEtiqueta; // Preço normal em duas vezes
+                break;
+            case 4:
+                valorPago = precoEtiqueta * 1.06; // Preço normal mais 6% de juros em três vezes
+                break;
+            default:
+                document.write("Código de pagamento inválido.");
+                break;
+        }
+
+        if (!isNaN(valorPago)) {
+            document.write(`O valor a ser pago é: R$ ${valorPago.toFixed(2)}`);
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ímpar ou Par</title>
+    <style>
+        body{
+            font-family: sans-serif;
+            background-color: #101010;
+            color: #FFFFFF;
+        }
+        button{
+            background-color: #FFFFFF;
+            color: #000000;
+            border: none;
+            border-radius: 0;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        button:hover{
+            opacity: 50%;
+        }
+        .error{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ímpar ou par</h1>
+    <input type="number" placeholder="Digite um número" />
+    <button>Saber</button>
+    <h3 id="result"></h3>
+    <script>
+        const body = document.querySelector('body')
+        const btn = document.querySelector('button');
+        
+        btn.addEventListener('click', ()=> {
+            const number = document.querySelector('input').value;
+            const result = document.querySelector("#result");
+            if(number % 2 == 0){
+                result.textContent = "PAR";
+            } else if(number % 2 == 1) {
+                result.textContent = "ÍMPAR";
+            }
+            else {
+                result.textContent = "Valor inválido!"
+                result.classList.add("error");
+            }
+        })
+    </script>
+</body>
+</html>
